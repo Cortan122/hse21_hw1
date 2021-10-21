@@ -49,3 +49,37 @@ sed -n '1,/^>/p' scaffold.fasta | head -n -1 >longest.fasta
 
 ![](img/image20211021172015.png)
 ![](img/image20211021172034.png)
+
+## Код на питоне
+Ссылка на Google colab: https://colab.research.google.com/drive/1l2AZD2vk311N0KWL_gtszP2ftFk1_sOz
+
+```python
+def info(file):
+  lenghts = !grep '^>' $file | sed -E 's/^.*len([0-9]+).*$/\1/'
+  nums = sorted((int(e) for e in lenghts), reverse=True)
+  total = sum(nums)
+
+  score = 0
+  for e in nums:
+    score += e
+    if score >= total/2:
+      N50 = e
+      break
+
+  print(f"количество = {len(nums)}")
+  print(f"общая длина = {total}")
+  print(f"самый длинный = {nums[0]}")
+  print(f"N50 = {N50}")
+```
+
+```python
+def gaps(file):
+  num = !grep -Ec 'N+' $file
+  total = !grep -Eo 'N+' $file | tr -cd 'N' | wc -c
+  print(f"количество = {num[0]}")
+  print(f"общая длина = {total[0]}")
+```
+
+
+
+![](img/image20211021200555.png)
