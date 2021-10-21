@@ -50,4 +50,5 @@ git config user.name "Костя Борисов"
 git add .
 git commit -m "task1 data"
 
+sed -n '1,/^>/p' data/scaffold_with_gaps.fasta | head -n -1 >data/longest_with_gaps.fasta
 sed -n '1,/^>/p' data/scaffold.fasta | head -n -1 >data/longest.fasta

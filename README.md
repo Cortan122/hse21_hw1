@@ -2,12 +2,12 @@
 ###### Котся Борисов БПИ197
 
 ## Задание №1
-[Список](https://github.com/Cortan122/hse21_hw1/blob/master/assembly.sh) комнад, которые были выполнены на сервере:
+[Список](https://github.com/Cortan122/hse21_hw1/blob/master/src/assembly.sh) комнад, которые были выполнены на сервере:
 ```bash
 Fastqc() {
   rm -rf fastqc multiqc
   mkdir fastqc multiqc
-  time fastqc "$@" -o fastqc
+  fastqc "$@" -o fastqc
   multiqc fastqc -o multiqc
 }
 
